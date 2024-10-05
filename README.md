@@ -46,15 +46,6 @@ Variables for flood separation settings:
     When `peaks_diff_threshold` > 2.5 and `peak_interval_threshold` < 14, two adjacent peaks will be merged. 
 
 
-References: 
-
-L. Tarasova, S. Basso, M. Zink, R. Merz, Exploring Controls on Rainfall-Runoff Events: 1. Time Series-Based Event 
-Separation and Temporal Dynamics of Event Runoff Response in Germany. Water Resources Research 54, 7711-7732 (2018).
-
-S. Zhang et al., Reconciling disagreement on global river flood changes in a warming climate. 
-Nature Climate Change 12, 1160-1167 (2022).
-
-
 ```python
 from idfloodPy.idFlood import flood_separate
 import pandas as pd
@@ -69,3 +60,12 @@ flood_separate(filePath, savePath, catchmentID, area, data,
                yarly_check=True, peak_height=None, calculate_baseflow=True,
                qb_threshold=0.5, Qdiff_threshold=0.005, peaks_diff_threshold=2.5, peak_interval_threshold=14)
 ```
+
+
+## References: 
+
+L. Tarasova, S. Basso, M. Zink, R. Merz, Exploring Controls on Rainfall-Runoff Events: 1. Time Series-Based Event 
+Separation and Temporal Dynamics of Event Runoff Response in Germany. Water Resources Research 54, 7711-7732 (2018).
+
+S. Zhang et al., Reconciling disagreement on global river flood changes in a warming climate. 
+Nature Climate Change 12, 1160-1167 (2022).

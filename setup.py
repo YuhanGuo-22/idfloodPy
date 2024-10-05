@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='idfloodPy',
-    version='0.1.0',
+    version='0.1.1',
     description='Flood event identification and separation package',
     author='Yuhan Guo',
     author_email='guoyuhan@mail.tsinghua.edu.cn',
@@ -14,8 +14,6 @@ setup(
         'scipy',
         'matplotlib',
         'baseflow',
-         "os",
-         "warnings"
     ],
     classifiers=[
         'Programming Language :: Python :: 3',

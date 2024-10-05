@@ -8,7 +8,7 @@ Output: separated flood events named with the start of each flood event (.csv fi
 ## Installation
 
 ```bash
-pip install idfloodPy
+pip install idfloodPy == 0.1.1
 ```
 
 ## Usage
@@ -52,6 +52,7 @@ import pandas as pd
 
 filePath = "path/to/data"
 savePath = "path/to/save"
+# Canada_02XA003.csv is the example csv file that can be downloaded from https://github.com/YuhanGuo-22/idfloodPy
 catchmentID = "Canada_02XA003"
 area = 4473.3
 data = pd.read_csv(filePath + catchmentID + ".csv", index_col=0)

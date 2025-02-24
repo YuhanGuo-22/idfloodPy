@@ -55,8 +55,8 @@ if __name__ == '__main__':
     # Ignore all warnings
     warnings.filterwarnings("ignore")
 
-    filePath = "H:/007-Hydrolib/2024-data-全球径流数据更新/flood_identification/"
-    flood_event_path = "H:/007-Hydrolib/2024-data-全球径流数据更新/flood_identification/flood_events/Canada_02XA003/"
+    filePath = "path/to/time-series data"
+    flood_event_path = "path/to/flood event data"
     # savePath = "G:/3-data analysis/"
 
     # Load the catchment time series

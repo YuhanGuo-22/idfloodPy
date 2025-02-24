@@ -2,7 +2,7 @@
 
 `idfloodPy` is a Python package for flood event separation.
 
-Input: runoff time series and catchment area for baseflow separation
+Input: runoff time series and catchment area for baseflow separation  
 Output: separated flood events named with the start of each flood event (.csv file)
 
 ## Installation
@@ -33,17 +33,18 @@ Variables for flood separation settings:
 1. `qb_threshold` is the threshold of average baseflow proportion of runoff with default value 0.5. 
    If baseflow is smaller than this threshold, the flood event valley point will be calculated using `Qobs=Qbase` 
    method (Tarasova, L.,2018). Otherwise, it will find valley points using `find_peaks` method in `scipy.signal `
-   
 2. `Qdiff_threshold` is the differences of Qobs and Qbase, with default value to be 0.005, 
     which can be customized as needed.
-
 3. `peaks_diff_threshold` is the multiple between two adjacent peaks with default value to be 2.5 which can be customized as needed. 
     If the multiple of the adjacent peaks is greater than this threshold, 
      the two floods will be merged into one.
-     
 4. `peak_interval_threshold` if interval of two adjacent peaks with default value to be 14 which can be customized as needed. if 
     two adjacent peaks interval is very close, this two peaks will be merged. 
     When `peaks_diff_threshold` > 2.5 and `peak_interval_threshold` < 14, two adjacent peaks will be merged. 
+
+A simple flood classification code used to recognize the snowmelt-induced flood, rain-on-snow flood and rainfall-induced flood is also included  
+
+See flood_classificaiton.py and Canada_02XA003_for_classification.csv attached.
 
 
 ```python

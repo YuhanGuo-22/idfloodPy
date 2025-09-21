@@ -11,7 +11,34 @@ Output: separated flood events named with the start of each flood event (.csv fi
 pip install idfloodPy == 0.1.1
 ```
 
+### System Requirements
+
+- Python 3.7 or higher
+- pip package manager
+
+### Dependencies
+
+#### Core Dependencies
+
+| Package | Version  | Purpose |
+|---------|----------|---------|
+| pandas | >=1.3.0  | Data manipulation and analysis |
+| numpy | >=1.20.0 | Numerical computing |
+| scipy | >=1.7.0  | Scientific computing (signal processing) |
+| matplotlib | >=3.3.0  | Data visualization and plotting |
+| baseflow | <= 0.0.8 | Baseflow separation algorithms |
+
+#### Built-in Modules (No Installation Required)
+
+- `os` - Operating system interface
+- `math` - Mathematical functions
+- `bisect` - Binary search algorithms
+- `warnings` - Warning control
+
+
 ## Usage
+
+### 1. Flood identification
 
 The flood_separate() needs users to provide:  
 
@@ -42,10 +69,6 @@ Variables for flood separation settings:
     two adjacent peaks interval is very close, this two peaks will be merged. 
     When `peaks_diff_threshold` > 2.5 and `peak_interval_threshold` < 14, two adjacent peaks will be merged. 
 
-A simple flood classification code used to recognize the snowmelt-induced flood, rain-on-snow flood and rainfall-induced flood is also included  
-
-See flood_classificaiton.py and Canada_02XA003_for_classification.csv attached.
-
 
 ```python
 from idfloodPy.idFlood import flood_separate
@@ -63,6 +86,39 @@ flood_separate(filePath, savePath, catchmentID, area, data,
                qb_threshold=0.5, Qdiff_threshold=0.005, peaks_diff_threshold=2.5, peak_interval_threshold=14)
 ```
 
+### 2.Flood classification
+
+#### Update 2025-9-21 flood_classificaiton_v2.py
+
+Improvements in flood_classification_v2.py
+
+- 🚀 **Exclude snowfall**: Removed **snowfall from ERA5-Land** and used **rainfall intensity** to compare with **snowmelt**.  
+- 🚀 **Snow conditions**: Added **snow depth** and **snow cover fraction** during flood periods → more realistic detection of **rain-on-snow events**.  
+- 🚀 **Mean vs. peak dominance**:  
+  - **Snowmelt mean > rainfall mean** **but** **rainfall peak > snowmelt peak** → use **rainfall intensity ratio** to check if **extreme rainfall dominates**.  
+  - **Rainfall mean > snowmelt mean** **but** **snowmelt peak > rainfall peak** → use **snowmelt intensity ratio** to test for **short-term intensive melt**.  
+
+➡️ These three refinements improve the **mechanistic classification** of **snowmelt floods**, **rain-on-snow floods**, and **rainfall floods** in cold regions.  
+
+**Parameters**: optimized with **SCE-UA** (3 rounds × 600 iterations). <br>
+Initial ranges = **5th–95th percentile** of all events. <br>
+Data source = **ERA5-Land**.  
+
+#### Update 2025-2-24 flood_classificaiton.py 
+
+flood_classificaiton.py is a simple flood classification code used to recognize the 
+snowmelt-induced flood, rain-on-snow flood and rainfall-induced flood, which used optimal result from Zhang(2022)  
+
+PS: Canada_02XA003_for_classification.csv attached is an example for flood classification
+
+## How to Cite
+
+If you use the code from this repository, please cite the following article:
+
+Guo, Y., Yang, Y., Yang, D., Zhang, L., Zheng, H., Xiong, J., Ruan, F., Han, J., & Liu, Z. (2025).  
+**Warming leads to both earlier and later snowmelt floods over the past 70 years.**  
+*Nature Communications*, 16, Article 3663.  
+[https://doi.org/10.1038/s41467-025-58832-0](https://doi.org/10.1038/s41467-025-58832-0)
 
 ## References: 
 
@@ -71,3 +127,5 @@ Separation and Temporal Dynamics of Event Runoff Response in Germany. Water Reso
 
 S. Zhang et al., Reconciling disagreement on global river flood changes in a warming climate. 
 Nature Climate Change 12, 1160-1167 (2022).
+
+

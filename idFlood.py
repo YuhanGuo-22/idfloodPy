@@ -15,7 +15,6 @@ def assign_local_water_year(row, start_month):
     else:
         return row.year - 1
 
-
 def refine_peak_qb90(qobs, peaks_obs_merge, valley_obs):
     # The peak value must be greater than the average value,
     peaks_obs_fil = []
